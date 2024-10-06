@@ -1,0 +1,1 @@
+"Team discussions involved specific debates on the use of proprietary libraries and features in different software components."
