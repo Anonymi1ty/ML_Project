@@ -15,7 +15,7 @@ safe_counter = len(os.listdir(safe_folder)) + 1
 unsafe_counter = len(os.listdir(unsafe_folder)) + 1
 
 # Read the dataset file
-data_file = "./Data.txt"
+data_file = "./Data/Data.txt"
 
 try:
     with open(data_file, "r", encoding="utf-8") as file:
