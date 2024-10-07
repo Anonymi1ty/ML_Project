@@ -10,5 +10,16 @@ Data.txt文件是初始数据文件，未做改动
 
 
 
-model使用谷歌的预训练模型[Word2Vector](https://code.google.com/archive/p/word2vec/)
 
+
+### Pretrained Models
+
+
+
+model使用谷歌的预训练模型[Word2Vector](https://code.google.com/archive/p/word2vec/)，应该放在`./Model` directory.
+
+### Environment Setup
+
+```
+sh install.sh
+```
