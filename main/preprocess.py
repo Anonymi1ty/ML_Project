@@ -34,6 +34,6 @@ def preprocess_text(file_path):
     return processed_sentences
 
 # 示例调用
-file_path = "./Data/RowData/Unsafe/148.txt"
-processed_data = preprocess_text(file_path)
-print(processed_data)
+# file_path = "./Data/RowData/Unsafe/148.txt"
+# processed_data = preprocess_text(file_path)
+# print(processed_data)

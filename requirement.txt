@@ -1,2 +1,3 @@
 nltk==3.7
 gensim==4.2.0
+numpy==1.23.5
