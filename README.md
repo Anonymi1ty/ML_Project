@@ -41,3 +41,14 @@ sh install.sh
 3. 微调模型`mixed_word2vec.model`，存储在Model目录下（仅保留语料中出现的词）
 4. 使用微调模型，将预处理后的数据转化为300d的向量，并且将整个文章转化为Vector（使用平均值加和的方式）`data_vectors.npy`，打上label标签`data_labels.npy`
 
+
+
+## 飞书
+
+https://icnir26y0hx8.feishu.cn/wiki/LE03w6B6ziYLSHkduI1cHty5nrh?from=from_copylink
+
+
+
+### 结果
+
+ROC曲线

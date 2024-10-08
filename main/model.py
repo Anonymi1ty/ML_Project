@@ -93,9 +93,9 @@ plt.legend(loc="lower right")
 plt.savefig('accuracy_over_epochs.png')
 
 # 7. 输出结果
-print("模型性能比较：\n")
+print("comparison:\n")
 for name, metrics in results.items():
-    print(f"模型：{name}")
+    print(f"model:{name}")
     for metric_name, value in metrics.items():
         if isinstance(value, float):
             print(f"  {metric_name}: {value:.4f}")
