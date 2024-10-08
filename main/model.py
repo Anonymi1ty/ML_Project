@@ -27,7 +27,6 @@ models = {
     'Decision Tree': DecisionTreeClassifier(random_state=42),
     'Random Forest': RandomForestClassifier(random_state=42),
     'XGBoost': xgb.XGBClassifier(use_label_encoder=False, eval_metric='logloss', random_state=42),
-    'LightGBM': lgb.LGBMClassifier(random_state=42),
     'KNN': KNeighborsClassifier(),
     'Naive Bayes': GaussianNB()
 }
