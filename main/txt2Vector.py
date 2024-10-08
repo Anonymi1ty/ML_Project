@@ -51,7 +51,7 @@ for i in range(1, 301):
         tokens = preprocess.preprocess_text(file_path)
         doc_vector = get_document_vector(tokens, word2vec_model)
         data.append(doc_vector)
-        labels.append(-1)
+        labels.append(0)
     else:
         print(f"文件 {file_path} 不存在。")
 
