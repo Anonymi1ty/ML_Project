@@ -16,6 +16,8 @@ import lightgbm as lgb
 data_vectors = np.load('./Data/data_vectors.npy')
 data_labels = np.load('./Data/data_labels.npy')
 
+# 将 -1 标签转换为 0
+data_labels = np.where(data_labels == -1, 0, data_labels)
 
 # 2. 划分训练集和测试集（7:3），并使用 stratify 来保持类别比例
 X_train, X_test, y_train, y_test = train_test_split(
@@ -92,9 +94,9 @@ plt.legend(loc="lower right")
 plt.savefig('accuracy_over_epochs.png')
 
 # 7. 输出结果
-print("model comparison:\n")
+print("模型性能比较：\n")
 for name, metrics in results.items():
-    print(f"model:{name}")
+    print(f"模型：{name}")
     for metric_name, value in metrics.items():
         if isinstance(value, float):
             print(f"  {metric_name}: {value:.4f}")
