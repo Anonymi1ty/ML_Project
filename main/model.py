@@ -15,9 +15,6 @@ import xgboost as xgb
 data_vectors = np.load('./Data/data_vectors.npy')
 data_labels = np.load('./Data/data_labels.npy')
 
-# 将 -1 标签转换为 0
-data_labels = np.where(data_labels == -1, 0, data_labels)
-
 # 2. 划分训练集和测试集（7:3），并使用 stratify 来保持类别比例
 X_train, X_test, y_train, y_test = train_test_split(
     data_vectors, data_labels, test_size=0.3, random_state=42, stratify=data_labels)
