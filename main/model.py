@@ -41,7 +41,7 @@ plt.figure(figsize=(10, 8))  # 初始化一个画布用于绘制 ROC 曲线
 for name, model in models.items():
     # 对于 SVM 和 KNN，使用概率校准
     if name in ['SVM', 'KNN']:
-        model = CalibratedClassifierCV(base_estimator=model, cv=5)
+        model = CalibratedClassifierCV(estimator=model, cv=5)
 
     # 训练模型
     model.fit(X_train, y_train)
