@@ -86,7 +86,7 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('ROC Curve Comparison')
 plt.legend(loc="lower right")
-plt.savefig('accuracy_over_epochs.png')
+plt.savefig('ROC Curve Comparison.png')
 
 # 7. 输出结果
 print("comparison:\n")
