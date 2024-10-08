@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, recall_score, f1_score, roc_auc_score, roc_curve
+from sklearn.metrics import accuracy_score, recall_score, f1_score, roc_auc_score, roc_curve, precision_score
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
@@ -55,6 +55,7 @@ for name, model in models.items():
 
     # 计算指标
     accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
     f1 = f1_score(y_test, y_pred)
     if y_proba is not None:
@@ -65,6 +66,7 @@ for name, model in models.items():
     # 保存结果
     results[name] = {
         'Accuracy': accuracy,
+        'Precision':precision,
         'Recall': recall,
         'F1-score': f1,
         'ROC AUC': roc_auc
