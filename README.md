@@ -57,4 +57,4 @@ sh install.sh
 
 ROC曲线
 
-![accuracy_over_epochs](.\accuracy_over_epochs.png)
+![accuracy_over_epochs](./ROC Curve Comparison.png)
