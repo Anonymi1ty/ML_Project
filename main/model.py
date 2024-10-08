@@ -73,8 +73,6 @@ for name, model in models.items():
         plt.plot(fpr, tpr, lw=2, label=f'{name} (AUC = {roc_auc:.2f})')
 
 # 6. 绘制 ROC 曲线
-
-
 plt.plot([0, 1], [0, 1], color='navy', linestyle='--', lw=2)  # 绘制对角线
 plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.05])
@@ -82,13 +80,12 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('ROC Curve Comparison')
 plt.legend(loc="lower right")
-
-plt.show()
+plt.savefig('accuracy_over_epochs.png')
 
 # 7. 输出结果
-print("模型性能比较：\n")
+print("model comparison:\n")
 for name, metrics in results.items():
-    print(f"模型：{name}")
+    print(f"model:{name}")
     for metric_name, value in metrics.items():
         if isinstance(value, float):
             print(f"  {metric_name}: {value:.4f}")
