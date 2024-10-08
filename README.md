@@ -26,6 +26,10 @@ sh install.sh
 
 
 
+### 运行
+
+直接打开model.py运行即可
+
 ---
 
 ## 具体流程
@@ -43,12 +47,14 @@ sh install.sh
 
 
 
-## 飞书
+## 具体报告
 
-https://icnir26y0hx8.feishu.cn/wiki/LE03w6B6ziYLSHkduI1cHty5nrh?from=from_copylink
+[飞书](https://icnir26y0hx8.feishu.cn/wiki/LE03w6B6ziYLSHkduI1cHty5nrh?from=from_copylink)
 
 
 
 ### 结果
 
 ROC曲线
+
+![accuracy_over_epochs](.\accuracy_over_epochs.png)

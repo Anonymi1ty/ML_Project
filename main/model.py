@@ -10,7 +10,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.calibration import CalibratedClassifierCV
 import xgboost as xgb
-import lightgbm as lgb
 
 # 1. 加载数据
 data_vectors = np.load('./Data/data_vectors.npy')
