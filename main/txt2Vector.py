@@ -12,6 +12,7 @@ safe_dir = "./Data/RowData/Safe"
 unsafe_dir = "./Data/RowData/Unsafe"
 
 # 定义函数：将词汇列表转换为文档向量（使用词向量的平均值）
+#[``,``...]
 def get_document_vector(tokens, model):
     # 获取模型词汇表
     vocab = set(model.wv.key_to_index.keys())

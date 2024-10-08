@@ -24,7 +24,7 @@ def preprocess_text(file_path):
     
     # # 去除停用词和分词
     stop_words = set(stopwords.words('english'))
-    # processed_sentences = []
+    # processed_sentences = [``,``,`....`]
     for sentence in sentences:
         words = word_tokenize(sentence)
         processed_sentences = [word for word in words if word not in stop_words]

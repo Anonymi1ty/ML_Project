@@ -7,6 +7,7 @@ pretrained_model_path = './Model/GoogleNews-vectors-negative300.bin.gz'
 pretrained_model = KeyedVectors.load_word2vec_format(pretrained_model_path, binary=True)
 
 # Step 2: 定义自己的语料库
+# [[`artic1`],[`ar2`].....]
 new_sentences = []
 # 使用 preprocess_text 函数对文本进行预处理
 for i in range(1, 301):
