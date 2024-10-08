@@ -48,13 +48,10 @@ for name, model in models.items():
     # 预测
     y_pred = model.predict(X_test)
 
-    # 获取预测概率或决策函数
+    
+    # 获取预测概率
     if hasattr(model, "predict_proba"):
         y_proba = model.predict_proba(X_test)[:, 1]
-    elif hasattr(model, "decision_function"):
-        y_proba = model.decision_function(X_test)
-        # 将决策函数的输出映射到 [0, 1] 区间
-        y_proba = (y_proba - y_proba.min()) / (y_proba.max() - y_proba.min())
     else:
         y_proba = None
 
