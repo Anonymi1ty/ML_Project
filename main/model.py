@@ -8,6 +8,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
+from sklearn.calibration import CalibratedClassifierCV
 import xgboost as xgb
 import lightgbm as lgb
 
@@ -39,25 +40,35 @@ results = {}
 
 # 5. 训练模型并计算指标
 plt.figure(figsize=(10, 8))  # 初始化一个画布用于绘制 ROC 曲线
-# plt.figure(figsize=(12, 10))
 
 for name, model in models.items():
+    # 对于 SVM 和 KNN，使用概率校准
+    if name in ['SVM', 'KNN']:
+        model = CalibratedClassifierCV(base_estimator=model, cv=5)
+
     # 训练模型
     model.fit(X_train, y_train)
     # 预测
     y_pred = model.predict(X_test)
 
-    # SVM 和 Logistic Regression 需要 predict_proba 来计算 ROC AUC
+    # 获取预测概率或决策函数
     if hasattr(model, "predict_proba"):
-        y_proba = model.predict_proba(X_test)[:, 1]  # 获取正类的概率
+        y_proba = model.predict_proba(X_test)[:, 1]
+    elif hasattr(model, "decision_function"):
+        y_proba = model.decision_function(X_test)
+        # 将决策函数的输出映射到 [0, 1] 区间
+        y_proba = (y_proba - y_proba.min()) / (y_proba.max() - y_proba.min())
     else:
-        y_proba = np.zeros_like(y_pred)  # 如果没有 predict_proba，赋予默认值（全部为0）
+        y_proba = None
 
     # 计算指标
     accuracy = accuracy_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
     f1 = f1_score(y_test, y_pred)
-    roc_auc = roc_auc_score(y_test, y_proba) if hasattr(model, "predict_proba") else "N/A"
+    if y_proba is not None:
+        roc_auc = roc_auc_score(y_test, y_proba)
+    else:
+        roc_auc = "N/A"
 
     # 保存结果
     results[name] = {
@@ -68,13 +79,11 @@ for name, model in models.items():
     }
 
     # 计算并绘制 ROC 曲线
-    if hasattr(model, "predict_proba"):
+    if y_proba is not None:
         fpr, tpr, _ = roc_curve(y_test, y_proba)
         plt.plot(fpr, tpr, lw=2, label=f'{name} (AUC = {roc_auc:.2f})')
 
 # 6. 绘制 ROC 曲线
-
-
 plt.plot([0, 1], [0, 1], color='navy', linestyle='--', lw=2)  # 绘制对角线
 plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.05])
@@ -82,7 +91,6 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('ROC Curve Comparison')
 plt.legend(loc="lower right")
-
 plt.show()
 
 # 7. 输出结果
