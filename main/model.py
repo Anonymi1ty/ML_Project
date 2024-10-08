@@ -21,7 +21,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # 3. 定义模型列表
 models = {
-    'SVM': SVC(probability=True, random_state=42),
+    'SVM': SVC(random_state=42),
     'Logistic Regression': LogisticRegression(max_iter=1000, random_state=42),
     'Decision Tree': DecisionTreeClassifier(random_state=42),
     'Random Forest': RandomForestClassifier(random_state=42),
